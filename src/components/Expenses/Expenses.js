@@ -16,8 +16,6 @@ const Expenses = (props) => {
     (expense) => expense.date.getFullYear().toString() === enteredYear
   );
 
-  
-
   return (
     <div>
       <Card className="expenses">
@@ -25,7 +23,7 @@ const Expenses = (props) => {
           startingYear={enteredYear}
           onChageFilter={saveYearHandler}
         />
-        <ExpensesList items={filteredExpense}/>
+        <ExpensesList items={filteredExpense} />
       </Card>
     </div>
   );
