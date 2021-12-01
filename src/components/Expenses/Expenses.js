@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 
-import ExpenseItem from "./ExpenseItem";
 import Card from "../UI/Card";
 import "./Expenses.css";
 import ExpensesFilter from "./ExpensesFilter";
+import ExpensesList from "./ExpensesList";
 
 const Expenses = (props) => {
   const [enteredYear, setEnteredYear] = useState("2020");
@@ -16,18 +16,7 @@ const Expenses = (props) => {
     (expense) => expense.date.getFullYear().toString() === enteredYear
   );
 
-  let expensesContent = <p>No Expenses Found.</p>;
-
-  if (filteredExpense.length > 0) {
-    expensesContent = filteredExpense.map((expense) => (
-      <ExpenseItem
-        key={expense.id}
-        title={expense.title}
-        amount={expense.amount}
-        date={expense.date}
-      />
-    ));
-  }
+  
 
   return (
     <div>
@@ -36,7 +25,7 @@ const Expenses = (props) => {
           startingYear={enteredYear}
           onChageFilter={saveYearHandler}
         />
-        {expensesContent}
+        <ExpensesList items={filteredExpense}/>
       </Card>
     </div>
   );
